@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& in) {
+      vector<vector<int>>an;
+        sort(in.begin(),in.end());
+        int x1=in[0][0],x2=in[0][1],f=0;
+        
+        for(int i=1;i<in.size();i++)
+        {
+            
+            int a=in[i][0],b=in[i][1];
+            if(x2>=a||x2>=b)
+            {
+                //if they are merging just update interval lenth;
+                x2=max(x2,b);
+            }
+           else
+           {
+               an.push_back({x1,x2});
+               x1=a,x2=b;
+           }
+            
+           
+            
+        }
+        an.push_back({x1,x2});
+        return an;
+        
+    }
+};
+
+https://leetcode.com/problems/merge-intervals/
